@@ -27,7 +27,7 @@ jobs:
           fail-build: false
           debug: false
           acs-report-enable: true
-      - name: Build Docker Image
+      - name: Parse SARIF file
         uses: FlowSquad/sarif-report-parse@v1.0.0
         with:
           sarif-file: ${{ steps.scan.outputs.sarif }}
