@@ -1,0 +1,14 @@
+name: "Sarif Report Parse"
+description: "Parses a SARIF report and logs its vulnerabilities."
+author: "Andreas Riepl <andreas.riepl@flowsquad.io>"
+inputs:
+  sarif-file:
+    required: true
+    description: >-
+      Path to valid SARIF file.
+runs:
+  using: "node12"
+  main: "dist/index.js"
+branding:
+  color: "blue"
+  icon: "package"

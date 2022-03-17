@@ -1,0 +1,43 @@
+{
+  "name": "@flowsquad/sarif-report-parse",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Parses a SARIF report and logs its vulnerabilities",
+  "author": "Andreas Riepl <andreas.riepl@flowsquad.io>",
+  "homepage": "https://github.com/FlowSquad/sarif-report-parse",
+  "bugs": {
+    "url": "https://github.com/FlowSquad/sarif-report-parse/issues"
+  },
+  "license": "Apache-2.0",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com/FlowSquad/sarif-report-parse.git"
+  },
+  "scripts": {
+    "build": "eslint src && tsc",
+    "dist": "eslint src && ncc cache clean && ncc build src/index.ts -o dist --minify --no-cache --target es2019 --license licenses.txt",
+    "lint": "eslint src"
+  },
+  "dependencies": {
+    "@actions/core": "^1.2.7",
+    "@actions/github": "^4.0.0",
+    "@actions/glob": "^0.1.1"
+  },
+  "devDependencies": {
+    "@types/sarif": "^2.1.4",
+    "@types/node": "^14.14.41",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@vercel/ncc": "^0.28.5",
+    "eslint": "^7.24.0",
+    "eslint-config-airbnb-typescript": "^12.3.1",
+    "eslint-plugin-import": "^2.22.0",
+    "typescript": "^4.2.4"
+  },
+  "engines": {
+    "node": "*"
+  }
+}
