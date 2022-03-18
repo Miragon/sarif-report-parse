@@ -8,7 +8,7 @@ async function run(): Promise<void> {
     core.startGroup("Reading and parsing input file");
 
     // 0. Check severity level
-    const severityLevelInput = core.getInput("severity-level", { required: false });
+    const severityLevelInput = core.getInput("severity-level", { required: false }) ?? "";
     let severityLevel = "HIGH";
     if (severities.find(s => s === severityLevelInput.toUpperCase())) {
         severityLevel = severityLevelInput.toUpperCase();
@@ -52,7 +52,7 @@ async function run(): Promise<void> {
                 core.warning(rule.help?.text ?? "", { title: `${severity}: ${rule.shortDescription?.text ?? rule.id}` });
             } else {
                 // eslint-disable-next-line no-console
-                console.log(rule.help?.text ?? "");
+                console.log(`${rule.shortDescription?.text ?? rule.id}\n${rule.help?.text ?? ""}`);
             }
         });
 
