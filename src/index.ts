@@ -2,8 +2,17 @@ import * as core from "@actions/core";
 import * as fs from "fs";
 import { Log, ReportingDescriptor } from "sarif";
 
+const severities = ["UNKNOWN", "NEGLIGIBLE", "LOW", "MEDIUM", "HIGH", "CRITICAL"];
+
 async function run(): Promise<void> {
     core.startGroup("Reading and parsing input file");
+
+    // 0. Check severity level
+    const severityLevelInput = core.getInput("severity-level", { required: false });
+    let severityLevel = "HIGH";
+    if (severities.find(s => s === severityLevelInput.toUpperCase())) {
+        severityLevel = severityLevelInput.toUpperCase();
+    }
 
     // 1. Read file
     let file: string;
@@ -34,8 +43,17 @@ async function run(): Promise<void> {
             rule.help?.text.split("\n")
                 .map(infoRow => infoRow.split(":"))
                 .forEach(tupel => infos.set(tupel[0], tupel[1]));
-            const severity = infos.get("Severity")?.trim().toUpperCase();
-            core.warning(rule.help?.text ?? "", { title: `${severity ?? "UNKNOWN"}: ${rule.fullDescription?.text ?? rule.id}` });
+            let severity = infos.get("Severity")?.trim().toUpperCase() ?? "UNKNOWN";
+            if (!severities.find(s => s === severity)) {
+                severity = "UNKNOWN";
+            }
+
+            if (severities.indexOf(severity) >= severities.indexOf(severityLevel)) {
+                core.warning(rule.help?.text ?? "", { title: `${severity}: ${rule.shortDescription?.text ?? rule.id}` });
+            } else {
+                // eslint-disable-next-line no-console
+                console.log(rule.help?.text ?? "");
+            }
         });
 
     core.endGroup();
