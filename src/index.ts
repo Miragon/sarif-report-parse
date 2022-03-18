@@ -49,10 +49,10 @@ async function run(): Promise<void> {
             }
 
             if (severities.indexOf(severity) >= severities.indexOf(severityLevel)) {
-                core.warning(rule.help?.text ?? "", { title: `${severity}: ${rule.shortDescription?.text ?? rule.id}` });
+                core.warning(rule.help?.text ?? "", { title: `${severity}: ${rule.shortDescription?.text ?? rule.id}\n` });
             } else {
                 // eslint-disable-next-line no-console
-                console.log(`${rule.shortDescription?.text ?? rule.id}\n${rule.help?.text ?? ""}`);
+                console.log(`${rule.shortDescription?.text ?? rule.id}\n${rule.help?.text ?? ""}\n`);
             }
         });
 

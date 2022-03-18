@@ -6,6 +6,11 @@ inputs:
     required: true
     description: >-
       Path to valid SARIF file.
+  severity-level:
+    required: false
+    description: >-
+      Start writing warnings at this level: ["unknown", "negligible", "low", "medium", "high", "critical"]
+      Default: high
 runs:
   using: "node12"
   main: "dist/index.js"
