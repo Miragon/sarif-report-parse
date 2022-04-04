@@ -21,7 +21,8 @@ async function run(): Promise<void> {
         file = fs.readFileSync(sarifFile, "utf8");
     } catch (e) {
         core.endGroup();
-        throw new Error(`Could not read file: ${e instanceof Error ? e.message : ""}`);
+        core.warning(`PARSING REPORT FAILED: Could not read file: ${e instanceof Error ? e.message : ""}`);
+        return;
     }
 
     // 2. Parse file
@@ -30,7 +31,8 @@ async function run(): Promise<void> {
         parsedFile = JSON.parse(file);
     } catch (e) {
         core.endGroup();
-        throw new Error(`Could not parse file: ${e instanceof Error ? e.message : ""}`);
+        core.warning(`PARSING REPORT FAILED: Could not parse file: ${e instanceof Error ? e.message : ""}`);
+        return;
     }
 
     // 3. Log severities
