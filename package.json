@@ -1,6 +1,6 @@
 {
   "name": "@flowsquad/sarif-report-parse",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "private": true,
   "description": "Parses a SARIF report and logs its vulnerabilities",
   "author": "Andreas Riepl <andreas.riepl@flowsquad.io>",
