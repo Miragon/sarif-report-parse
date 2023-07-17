@@ -1,12 +1,12 @@
 {
-  "name": "@flowsquad/sarif-report-parse",
-  "version": "1.0.2",
+  "name": "@miragon/sarif-report-parse",
+  "version": "2.0.0",
   "private": true,
   "description": "Parses a SARIF report and logs its vulnerabilities",
-  "author": "Andreas Riepl <andreas.riepl@flowsquad.io>",
-  "homepage": "https://github.com/FlowSquad/sarif-report-parse",
+  "author": "Andreas Riepl <andreas.riepl@miragon.io>",
+  "homepage": "https://github.com/Miragon/sarif-report-parse",
   "bugs": {
-    "url": "https://github.com/FlowSquad/sarif-report-parse/issues"
+    "url": "https://github.com/Miragon/sarif-report-parse/issues"
   },
   "license": "Apache-2.0",
   "files": [
@@ -15,7 +15,7 @@
   "main": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "ssh://git@github.com/FlowSquad/sarif-report-parse.git"
+    "url": "ssh://git@github.com/Miragon/sarif-report-parse.git"
   },
   "scripts": {
     "build": "eslint src && tsc",
@@ -23,7 +23,7 @@
     "lint": "eslint src"
   },
   "dependencies": {
-    "@actions/core": "^1.2.7",
+    "@actions/core": "^1.10.0",
     "@actions/github": "^4.0.0",
     "@actions/glob": "^0.1.1"
   },

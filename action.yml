@@ -1,6 +1,6 @@
 name: "Sarif Report Parse"
 description: "Parses a SARIF report and logs its vulnerabilities."
-author: "Andreas Riepl <andreas.riepl@flowsquad.io>"
+author: "Andreas Riepl <andreas.riepl@miragon.io>"
 inputs:
   sarif-file:
     required: true
