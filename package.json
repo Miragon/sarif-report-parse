@@ -1,6 +1,6 @@
 {
   "name": "@miragon/sarif-report-parse",
-  "version": "2.0.0",
+  "version": "1.0.2",
   "private": true,
   "description": "Parses a SARIF report and logs its vulnerabilities",
   "author": "Andreas Riepl <andreas.riepl@miragon.io>",
@@ -24,8 +24,8 @@
   },
   "dependencies": {
     "@actions/core": "^1.10.0",
-    "@actions/github": "^4.0.0",
-    "@actions/glob": "^0.1.1"
+    "@actions/github": "^5.1.1",
+    "@actions/glob": "^0.4.0"
   },
   "devDependencies": {
     "@types/sarif": "^2.1.4",
