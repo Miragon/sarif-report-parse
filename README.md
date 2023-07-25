@@ -28,7 +28,7 @@ jobs:
           debug: false
           acs-report-enable: true
       - name: Parse SARIF file
-        uses: FlowSquad/sarif-report-parse@v1.0.1
+        uses: Miragon/sarif-report-parse@v1.0.3
         with:
           sarif-file: ${{ steps.scan.outputs.sarif }}
 ```

@@ -1,6 +1,6 @@
 name: "Sarif Report Parse"
 description: "Parses a SARIF report and logs its vulnerabilities."
-author: "Andreas Riepl <andreas.riepl@flowsquad.io>"
+author: "Andreas Riepl <andreas.riepl@miragon.io>"
 inputs:
   sarif-file:
     required: true
@@ -12,7 +12,7 @@ inputs:
       Start writing warnings at this level: ["unknown", "negligible", "low", "medium", "high", "critical"]
       Default: high
 runs:
-  using: "node12"
+  using: "node16"
   main: "dist/index.js"
 branding:
   color: "blue"
