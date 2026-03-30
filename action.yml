@@ -12,7 +12,7 @@ inputs:
       Start writing warnings at this level: ["unknown", "negligible", "low", "medium", "high", "critical"]
       Default: high
 runs:
-  using: "node20"
+  using: "node24"
   main: "dist/index.js"
 branding:
   color: "blue"
