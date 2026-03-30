@@ -1,0 +1,47 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:best-practices"
+  ],
+  "enabledManagers": [
+    "npm",
+    "github-actions",
+    "nvm",
+    "custom.regex"
+  ],
+  "labels": [
+    "dependencies"
+  ],
+  "dependencyDashboard": true,
+  "lockFileMaintenance": {
+    "enabled": true
+  },
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Update Node.js runtime in action metadata",
+      "managerFilePatterns": [
+        "/^action\\.ya?ml$/"
+      ],
+      "matchStrings": [
+        "using:\\s*\"node(?<currentValue>\\d+)\""
+      ],
+      "depNameTemplate": "node",
+      "datasourceTemplate": "node-version",
+      "versioningTemplate": "node",
+      "extractVersionTemplate": "^(?<version>\\d+)"
+    }
+  ],
+  "packageRules": [
+    {
+      "description": "Only propose even Node.js majors for action runtime",
+      "matchManagers": [
+        "custom.regex"
+      ],
+      "matchPackageNames": [
+        "node"
+      ],
+      "allowedVersions": "/^\\d*[02468]$/"
+    }
+  ]
+}
