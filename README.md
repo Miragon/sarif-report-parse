@@ -28,7 +28,7 @@ jobs:
           debug: false
           acs-report-enable: true
       - name: Parse SARIF file
-        uses: Miragon/sarif-report-parse@v1.0.3
+        uses: Miragon/sarif-report-parse@v1.0.5
         with:
           sarif-file: ${{ steps.scan.outputs.sarif }}
 ```
@@ -52,8 +52,8 @@ There are many ways in which you can contribute to this repository, and not all 
   
 ## Development Notice
 
-To create a new release, use the task `yarn dist`. It runs ESLint, clears the cache, and creates a distributable build
-including all required dependencies using @vercel/ncc.
+To create a new release, use the task `yarn dist`. It runs ESLint and creates a distributable build
+including all required dependencies using esbuild.
 
 ## License
 

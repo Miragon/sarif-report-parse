@@ -4,6 +4,8 @@
         "module": "commonjs",
         "moduleResolution": "Node",
         "target": "es2019",
+        "ignoreDeprecations": "6.0",
+        "types": ["node"],
         "outDir": "./dist",
         "rootDir": "./src",
         "strict": true,

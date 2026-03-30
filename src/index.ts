@@ -4,7 +4,7 @@ import { Log, ReportingDescriptor } from "sarif";
 
 const severities = ["UNKNOWN", "NEGLIGIBLE", "LOW", "MEDIUM", "HIGH", "CRITICAL"];
 
-async function run(): Promise<void> {
+function run(): void {
     core.startGroup("Reading and parsing input file");
 
     // 0. Check severity level
@@ -28,7 +28,7 @@ async function run(): Promise<void> {
     // 2. Parse file
     let parsedFile: Log;
     try {
-        parsedFile = JSON.parse(file);
+        parsedFile = JSON.parse(file) as unknown as Log;
     } catch (e) {
         core.endGroup();
         core.warning(`PARSING REPORT FAILED: Could not parse file: ${e instanceof Error ? e.message : ""}`);
@@ -53,7 +53,6 @@ async function run(): Promise<void> {
             if (severities.indexOf(severity) >= severities.indexOf(severityLevel)) {
                 core.warning(rule.help?.text ?? "", { title: `${severity}: ${rule.shortDescription?.text ?? rule.id}\n` });
             } else {
-                // eslint-disable-next-line no-console
                 console.log(`${rule.shortDescription?.text ?? rule.id}\n${rule.help?.text ?? ""}\n`);
             }
         });
@@ -61,12 +60,12 @@ async function run(): Promise<void> {
     core.endGroup();
 }
 
-const asyncRun = async (): Promise<void> => {
+const runMain = (): void => {
     try {
-        await run();
+        run();
     } catch (e) {
         core.setFailed(e instanceof Error ? e.message : "Execution failed");
     }
 };
 
-asyncRun();
+runMain();
