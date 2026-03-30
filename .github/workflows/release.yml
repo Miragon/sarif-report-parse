@@ -1,15 +1,7 @@
 name: Release
 
 on:
-  push:
-    tags:
-      - "v*"
   workflow_dispatch:
-    inputs:
-      tag:
-        description: "Tag to release (for example: v1.2.3)"
-        required: true
-        type: string
 
 permissions:
   contents: write
@@ -20,10 +12,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Checkout selected tag for manual run
-        if: github.event_name == 'workflow_dispatch'
-        run: git checkout ${{ inputs.tag }}
 
       - name: Fetch full history and tags
         run: |
@@ -48,17 +36,29 @@ jobs:
       - name: Ensure dist is committed
         run: git diff --exit-code dist
 
-      - name: Resolve release tag
-        id: resolve_tag
+      - name: Resolve release version and tag
+        id: release_meta
         run: |
-          if [ "${GITHUB_EVENT_NAME}" = "workflow_dispatch" ]; then
-            echo "tag=${{ inputs.tag }}" >> "$GITHUB_OUTPUT"
-          else
-            echo "tag=${GITHUB_REF_NAME}" >> "$GITHUB_OUTPUT"
+          version="$(node -p "require('./package.json').version")"
+          if [ -z "$version" ]; then
+            echo "Could not resolve version from package.json"
+            exit 1
+          fi
+          echo "version=${version}" >> "$GITHUB_OUTPUT"
+          echo "tag=v${version}" >> "$GITHUB_OUTPUT"
+
+      - name: Ensure release tag does not already exist
+        run: |
+          tag="${{ steps.release_meta.outputs.tag }}"
+          if git rev-parse "refs/tags/${tag}" >/dev/null 2>&1; then
+            echo "Tag ${tag} already exists."
+            exit 1
           fi
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ steps.resolve_tag.outputs.tag }}
+          tag_name: ${{ steps.release_meta.outputs.tag }}
+          name: ${{ steps.release_meta.outputs.tag }}
+          target_commitish: ${{ github.sha }}
           generate_release_notes: true
