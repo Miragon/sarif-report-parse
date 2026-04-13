@@ -29,7 +29,7 @@
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
-    "@types/node": "25.5.0",
+    "@types/node": "25.6.0",
     "@types/sarif": "2.1.7",
     "@typescript-eslint/eslint-plugin": "8.57.2",
     "@typescript-eslint/parser": "8.57.2",
