@@ -24,9 +24,7 @@
     "test": "node --test"
   },
   "dependencies": {
-    "@actions/core": "^3.0.0",
-    "@actions/github": "^9.0.0",
-    "@actions/glob": "^0.6.1"
+    "@actions/core": "^3.0.0"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
