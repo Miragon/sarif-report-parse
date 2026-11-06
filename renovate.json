@@ -3,7 +3,8 @@
   "extends": [
     "config:best-practices",
     "schedule:monthly",
-    ":maintainLockFilesMonthly"
+    ":maintainLockFilesMonthly",
+    ":disableRateLimiting"
   ],
   "enabledManagers": [
     "npm",
