@@ -1,5 +1,7 @@
 # Sarif Report Parse
 
+> **Maintenance mode:** This action only receives security fixes and Node.js runtime updates. No new features are planned.
+
 If you'd like to see [Anchore Scan Action](https://github.com/anchore/scan-action)'s result, you could either upgrade your Github plan to Enterpise and activate Automated Code Scanning (ACS) or you use this action:
 ![Action Result](docs/img/action-result-screenshot.png)
 
@@ -33,6 +35,20 @@ jobs:
           sarif-file: ${{ steps.scan.outputs.sarif }}
 ```
 
+## Supported tools
+
+The action reads the severity from the `Severity: X` line in each rule's `help.text`. This works for:
+
+- [Anchore/Grype](https://github.com/anchore/scan-action)
+- [Trivy](https://github.com/aquasecurity/trivy): vulnerabilities, misconfigurations and secrets
+
+Not supported:
+
+- Trivy license findings, which have no severity and are only logged
+- tflint, which reports severity only in `result.level`, so nothing gets annotated
+
+The action evaluates rules, not results, so annotations carry no file or line, and each finding appears once regardless of how many locations it affects.
+
 ## Contributing
 
 We are always welcoming new contributors that are helping to improve this action.
@@ -52,8 +68,8 @@ There are many ways in which you can contribute to this repository, and not all 
   
 ## Development Notice
 
-To create a new release, use the task `yarn dist`. It runs ESLint and creates a distributable build
-including all required dependencies using esbuild.
+Run `yarn build && yarn dist && yarn test`. `yarn dist` runs ESLint and bundles the action into `dist/`, which must be
+committed. The tests run against that bundle. To release, bump `version` in `package.json` and start the Release workflow.
 
 ## License
 
