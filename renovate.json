@@ -55,6 +55,27 @@
         "github-actions"
       ],
       "groupName": "github actions"
+    },
+    {
+      "description": "Keep Node.js types on the action runtime major (node24 in action.yml)",
+      "matchPackageNames": [
+        "@types/node"
+      ],
+      "allowedVersions": "24.x"
+    },
+    {
+      "description": "Keep local Node.js on the action runtime major (node24 in action.yml)",
+      "matchManagers": [
+        "nvm"
+      ],
+      "allowedVersions": "24.x"
+    },
+    {
+      "description": "typescript-eslint does not support TypeScript 7 yet",
+      "matchPackageNames": [
+        "typescript"
+      ],
+      "allowedVersions": "<7"
     }
   ]
 }
