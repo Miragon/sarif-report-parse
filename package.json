@@ -1,6 +1,6 @@
 {
   "name": "@miragon/sarif-report-parse",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "private": true,
   "description": "Parses a SARIF report and logs its vulnerabilities",
   "author": "Andreas Riepl <andreas.riepl@miragon.io>",
