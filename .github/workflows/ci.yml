@@ -30,6 +30,9 @@ jobs:
       - name: Bundle
         run: npm run dist
 
+      - name: Ensure dist is committed
+        run: git diff --exit-code dist || (echo "::error::dist/ is outdated, run 'yarn dist' and commit the result" && exit 1)
+
       # Tests run against the freshly bundled dist/, so dependency updates are covered too.
       - name: Test
         run: npm test
