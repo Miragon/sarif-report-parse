@@ -28,14 +28,14 @@
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
-    "@types/node": "25.5.0",
+    "@types/node": "26.6.6",
     "@types/sarif": "2.1.7",
     "@typescript-eslint/eslint-plugin": "8.57.2",
     "@typescript-eslint/parser": "8.57.2",
     "esbuild": "0.28.1",
     "eslint": "10.1.0",
     "eslint-plugin-import": "2.32.0",
-    "typescript": "6.0.2"
+    "typescript": "7.0.2"
   },
   "engines": {
     "node": "*"
