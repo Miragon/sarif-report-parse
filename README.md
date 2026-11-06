@@ -80,8 +80,7 @@ the tests against it.
 | --- | --- |
 | Monthly Renovate PRs | Review and merge once CI is green. |
 | Security PR (`[SECURITY]`) | Merge right away, Renovate skips the schedule for these. |
-| CI fails at "Ensure dist is committed" | Run `yarn dist` on the PR branch, commit and push. |
-| `@actions/core` changed | Release a patch version, otherwise users never get the update. |
+| CI fails at "Ensure dist is committed" | The bundle changed, so users only get it with a release. On the PR branch, run `yarn dist`, bump the patch `version` in `package.json`, commit and push. After merging, start the Release workflow. If several PRs change `dist/` in one month, bump and release once. |
 | GitHub supports a newer Node.js runtime for actions | Update `runs.using` in `action.yml`, `.nvmrc`, `--target` in the `dist` script and the `24.x` rules in `renovate.json`, then release a major version. |
 | typescript-eslint supports TypeScript 7 | Remove the `typescript` `<7` rule from `renovate.json`. |
 
