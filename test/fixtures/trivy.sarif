@@ -1,0 +1,308 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/main/sarif-2.1/schema/sarif-schema-2.1.0.json",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "fullName": "Trivy Vulnerability Scanner",
+          "informationUri": "https://github.com/aquasecurity/trivy",
+          "name": "Trivy",
+          "rules": [
+            {
+              "id": "CVE-2021-23337",
+              "name": "LanguageSpecificPackageVulnerability",
+              "shortDescription": {
+                "text": "nodejs-lodash: command injection via template"
+              },
+              "fullDescription": {
+                "text": "Lodash versions prior to 4.17.21 are vulnerable to Command Injection via the template function."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://avd.aquasec.com/nvd/cve-2021-23337",
+              "help": {
+                "text": "Vulnerability CVE-2021-23337\nSeverity: HIGH\nPackage: lodash\nFixed Version: 4.17.21\nLink: [CVE-2021-23337](https://avd.aquasec.com/nvd/cve-2021-23337)\nLodash versions prior to 4.17.21 are vulnerable to Command Injection via the template function.",
+                "markdown": "**Vulnerability CVE-2021-23337**\n| Severity | Package | Fixed Version | Link |\n| --- | --- | --- | --- |\n|HIGH|lodash|4.17.21|[CVE-2021-23337](https://avd.aquasec.com/nvd/cve-2021-23337)|\n\nLodash versions prior to 4.17.21 are vulnerable to Command Injection via the template function."
+              },
+              "properties": {
+                "cvssv3_baseScore": 7.2,
+                "cvssv3_vector": "CVSS:3.1/AV:N/AC:L/PR:H/UI:N/S:U/C:H/I:H/A:H",
+                "precision": "very-high",
+                "security-severity": "7.2",
+                "tags": [
+                  "vulnerability",
+                  "security",
+                  "HIGH"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2026-4800",
+              "name": "LanguageSpecificPackageVulnerability",
+              "shortDescription": {
+                "text": "lodash: lodash: Arbitrary code execution via untrusted input in template imports"
+              },
+              "fullDescription": {
+                "text": "The fix for CVE-2021-23337 added validation for the variable option in _.template but did not apply the same validation to options.imports key names, and both paths flow into the same Function() constructor sink. When an application passes untrusted input as options.imports key names, an attacker can inject default-parameter expressions that execute arbitrary code at template compilation time. Additionally, _.template uses assignInWith to merge imports, which enumerates inherited properties via for..in, so if Object.prototype has been polluted by another vector the polluted keys are copied into the imports object and passed to Function(). The issue is fixed in 4.18.1 for lodash, lodash-es, lodash-amd, and lodash.template. As a workaround, do not pass untrusted input as key names in options.imports; use only developer-controlled, static key names."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://avd.aquasec.com/nvd/cve-2026-4800",
+              "help": {
+                "text": "Vulnerability CVE-2026-4800\nSeverity: HIGH\nPackage: lodash\nFixed Version: 4.18.0\nLink: [CVE-2026-4800](https://avd.aquasec.com/nvd/cve-2026-4800)\nThe fix for CVE-2021-23337 added validation for the variable option in _.template but did not apply the same validation to options.imports key names, and both paths flow into the same Function() constructor sink. When an application passes untrusted input as options.imports key names, an attacker can inject default-parameter expressions that execute arbitrary code at template compilation time. Additionally, _.template uses assignInWith to merge imports, which enumerates inherited properties via for..in, so if Object.prototype has been polluted by another vector the polluted keys are copied into the imports object and passed to Function(). The issue is fixed in 4.18.1 for lodash, lodash-es, lodash-amd, and lodash.template. As a workaround, do not pass untrusted input as key names in options.imports; use only developer-controlled, static key names.",
+                "markdown": "**Vulnerability CVE-2026-4800**\n| Severity | Package | Fixed Version | Link |\n| --- | --- | --- | --- |\n|HIGH|lodash|4.18.0|[CVE-2026-4800](https://avd.aquasec.com/nvd/cve-2026-4800)|\n\nThe fix for CVE-2021-23337 added validation for the variable option in _.template but did not apply the same validation to options.imports key names, and both paths flow into the same Function() constructor sink. When an application passes untrusted input as options.imports key names, an attacker can inject default-parameter expressions that execute arbitrary code at template compilation time. Additionally, _.template uses assignInWith to merge imports, which enumerates inherited properties via for..in, so if Object.prototype has been polluted by another vector the polluted keys are copied into the imports object and passed to Function(). The issue is fixed in 4.18.1 for lodash, lodash-es, lodash-amd, and lodash.template. As a workaround, do not pass untrusted input as key names in options.imports; use only developer-controlled, static key names."
+              },
+              "properties": {
+                "cvssv3_baseScore": 8.1,
+                "cvssv3_vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H",
+                "precision": "very-high",
+                "security-severity": "8.1",
+                "tags": [
+                  "vulnerability",
+                  "security",
+                  "HIGH"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2020-28500",
+              "name": "LanguageSpecificPackageVulnerability",
+              "shortDescription": {
+                "text": "nodejs-lodash: ReDoS via the toNumber, trim and trimEnd functions"
+              },
+              "fullDescription": {
+                "text": "Lodash versions prior to 4.17.21 are vulnerable to Regular Expression Denial of Service (ReDoS) via the toNumber, trim and trimEnd functions."
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "helpUri": "https://avd.aquasec.com/nvd/cve-2020-28500",
+              "help": {
+                "text": "Vulnerability CVE-2020-28500\nSeverity: MEDIUM\nPackage: lodash\nFixed Version: 4.17.21\nLink: [CVE-2020-28500](https://avd.aquasec.com/nvd/cve-2020-28500)\nLodash versions prior to 4.17.21 are vulnerable to Regular Expression Denial of Service (ReDoS) via the toNumber, trim and trimEnd functions.",
+                "markdown": "**Vulnerability CVE-2020-28500**\n| Severity | Package | Fixed Version | Link |\n| --- | --- | --- | --- |\n|MEDIUM|lodash|4.17.21|[CVE-2020-28500](https://avd.aquasec.com/nvd/cve-2020-28500)|\n\nLodash versions prior to 4.17.21 are vulnerable to Regular Expression Denial of Service (ReDoS) via the toNumber, trim and trimEnd functions."
+              },
+              "properties": {
+                "cvssv3_baseScore": 5.3,
+                "cvssv3_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L",
+                "precision": "very-high",
+                "security-severity": "5.3",
+                "tags": [
+                  "vulnerability",
+                  "security",
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2025-13465",
+              "name": "LanguageSpecificPackageVulnerability",
+              "shortDescription": {
+                "text": "lodash: prototype pollution in _.unset and _.omit functions"
+              },
+              "fullDescription": {
+                "text": "The _.unset and _.omit functions in Lodash are vulnerable to prototype pollution. An attacker can pass crafted paths which cause Lodash to delete methods from global prototypes. The issue permits deletion of properties but does not allow overwriting their original behavior. The issue is patched from 4.17.23 to 4.18.0 depending on the package: lodash, lodash-es, and lodash-amd in 4.17.23, and the standalone lodash.unset and lodash.omit packages in 4.18.0."
+              },
+              "defaultConfiguration": {
+                "level": "warning"
+              },
+              "helpUri": "https://avd.aquasec.com/nvd/cve-2025-13465",
+              "help": {
+                "text": "Vulnerability CVE-2025-13465\nSeverity: MEDIUM\nPackage: lodash\nFixed Version: 4.17.23\nLink: [CVE-2025-13465](https://avd.aquasec.com/nvd/cve-2025-13465)\nThe _.unset and _.omit functions in Lodash are vulnerable to prototype pollution. An attacker can pass crafted paths which cause Lodash to delete methods from global prototypes. The issue permits deletion of properties but does not allow overwriting their original behavior. The issue is patched from 4.17.23 to 4.18.0 depending on the package: lodash, lodash-es, and lodash-amd in 4.17.23, and the standalone lodash.unset and lodash.omit packages in 4.18.0.",
+                "markdown": "**Vulnerability CVE-2025-13465**\n| Severity | Package | Fixed Version | Link |\n| --- | --- | --- | --- |\n|MEDIUM|lodash|4.17.23|[CVE-2025-13465](https://avd.aquasec.com/nvd/cve-2025-13465)|\n\nThe _.unset and _.omit functions in Lodash are vulnerable to prototype pollution. An attacker can pass crafted paths which cause Lodash to delete methods from global prototypes. The issue permits deletion of properties but does not allow overwriting their original behavior. The issue is patched from 4.17.23 to 4.18.0 depending on the package: lodash, lodash-es, and lodash-amd in 4.17.23, and the standalone lodash.unset and lodash.omit packages in 4.18.0."
+              },
+              "properties": {
+                "cvssv3_baseScore": 6.5,
+                "cvssv3_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L",
+                "cvssv40_baseScore": 6.9,
+                "cvssv40_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:L/SC:H/SI:H/SA:H/E:P",
+                "precision": "very-high",
+                "security-severity": "6.5",
+                "tags": [
+                  "vulnerability",
+                  "security",
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2021-44906",
+              "name": "LanguageSpecificPackageVulnerability",
+              "shortDescription": {
+                "text": "minimist: prototype pollution"
+              },
+              "fullDescription": {
+                "text": "Minimist \u003c=1.2.5 is vulnerable to Prototype Pollution via file index.js, function setKey() (lines 69-95)."
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "helpUri": "https://avd.aquasec.com/nvd/cve-2021-44906",
+              "help": {
+                "text": "Vulnerability CVE-2021-44906\nSeverity: CRITICAL\nPackage: minimist\nFixed Version: 1.2.6, 0.2.4\nLink: [CVE-2021-44906](https://avd.aquasec.com/nvd/cve-2021-44906)\nMinimist \u003c=1.2.5 is vulnerable to Prototype Pollution via file index.js, function setKey() (lines 69-95).",
+                "markdown": "**Vulnerability CVE-2021-44906**\n| Severity | Package | Fixed Version | Link |\n| --- | --- | --- | --- |\n|CRITICAL|minimist|1.2.6, 0.2.4|[CVE-2021-44906](https://avd.aquasec.com/nvd/cve-2021-44906)|\n\nMinimist \u003c=1.2.5 is vulnerable to Prototype Pollution via file index.js, function setKey() (lines 69-95)."
+              },
+              "properties": {
+                "cvssv3_baseScore": 9.8,
+                "cvssv3_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+                "precision": "very-high",
+                "security-severity": "9.8",
+                "tags": [
+                  "vulnerability",
+                  "security",
+                  "CRITICAL"
+                ]
+              }
+            }
+          ],
+          "version": "0.76.1"
+        }
+      },
+      "results": [
+        {
+          "ruleId": "CVE-2021-23337",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {
+            "text": "Package: lodash\nInstalled Version: 4.17.20\nVulnerability CVE-2021-23337\nSeverity: HIGH\nFixed Version: 4.17.21\nLink: [CVE-2021-23337](https://avd.aquasec.com/nvd/cve-2021-23337)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "message": {
+                "text": "package-lock.json: lodash@4.17.20"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2026-4800",
+          "ruleIndex": 1,
+          "level": "error",
+          "message": {
+            "text": "Package: lodash\nInstalled Version: 4.17.20\nVulnerability CVE-2026-4800\nSeverity: HIGH\nFixed Version: 4.18.0\nLink: [CVE-2026-4800](https://avd.aquasec.com/nvd/cve-2026-4800)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "message": {
+                "text": "package-lock.json: lodash@4.17.20"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2020-28500",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "Package: lodash\nInstalled Version: 4.17.20\nVulnerability CVE-2020-28500\nSeverity: MEDIUM\nFixed Version: 4.17.21\nLink: [CVE-2020-28500](https://avd.aquasec.com/nvd/cve-2020-28500)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "message": {
+                "text": "package-lock.json: lodash@4.17.20"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2025-13465",
+          "ruleIndex": 3,
+          "level": "warning",
+          "message": {
+            "text": "Package: lodash\nInstalled Version: 4.17.20\nVulnerability CVE-2025-13465\nSeverity: MEDIUM\nFixed Version: 4.17.23\nLink: [CVE-2025-13465](https://avd.aquasec.com/nvd/cve-2025-13465)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "message": {
+                "text": "package-lock.json: lodash@4.17.20"
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2021-44906",
+          "ruleIndex": 4,
+          "level": "error",
+          "message": {
+            "text": "Package: minimist\nInstalled Version: 1.2.5\nVulnerability CVE-2021-44906\nSeverity: CRITICAL\nFixed Version: 1.2.6, 0.2.4\nLink: [CVE-2021-44906](https://avd.aquasec.com/nvd/cve-2021-44906)"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "package-lock.json",
+                  "uriBaseId": "ROOTPATH"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 1,
+                  "endLine": 1,
+                  "endColumn": 1
+                }
+              },
+              "message": {
+                "text": "package-lock.json: minimist@1.2.5"
+              }
+            }
+          ]
+        }
+      ],
+      "columnKind": "utf16CodeUnits",
+      "originalUriBaseIds": {
+        "ROOTPATH": {
+          "uri": "file:///var/folders/hh/4h1k18jj3cz20gfzsl0yb5cr0000gn/T/scan/"
+        }
+      }
+    }
+  ]
+}

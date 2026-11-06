@@ -20,7 +20,8 @@
   "scripts": {
     "build": "eslint \"src/**/*.ts\" && tsc",
     "dist": "eslint \"src/**/*.ts\" && esbuild src/index.ts --bundle --packages=bundle --platform=node --target=node24 --format=cjs --outfile=dist/index.js --minify",
-    "lint": "eslint \"src/**/*.ts\""
+    "lint": "eslint \"src/**/*.ts\"",
+    "test": "node --test"
   },
   "dependencies": {
     "@actions/core": "^3.0.0",
