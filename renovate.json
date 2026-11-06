@@ -1,7 +1,9 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:best-practices"
+    "config:best-practices",
+    "schedule:monthly",
+    ":maintainLockFilesMonthly"
   ],
   "enabledManagers": [
     "npm",
@@ -13,9 +15,6 @@
     "dependencies"
   ],
   "dependencyDashboard": true,
-  "lockFileMaintenance": {
-    "enabled": true
-  },
   "customManagers": [
     {
       "customType": "regex",
@@ -42,6 +41,20 @@
         "node"
       ],
       "allowedVersions": "/^\\d*[02468]$/"
+    },
+    {
+      "description": "Dev tooling grouped into one PR",
+      "matchDepTypes": [
+        "devDependencies"
+      ],
+      "groupName": "dev tooling"
+    },
+    {
+      "description": "CI actions grouped into one PR",
+      "matchManagers": [
+        "github-actions"
+      ],
+      "groupName": "github actions"
     }
   ]
 }
