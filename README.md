@@ -71,6 +71,20 @@ There are many ways in which you can contribute to this repository, and not all 
 Run `yarn build && yarn dist && yarn test`. `yarn dist` runs ESLint and bundles the action into `dist/`, which must be
 committed. The tests run against that bundle. To release, bump `version` in `package.json` and start the Release workflow.
 
+### Maintenance
+
+Renovate opens updates on the 1st of each month. CI builds `dist/`, fails if the committed bundle is outdated, and runs
+the tests against it.
+
+| When | What to do |
+| --- | --- |
+| Monthly Renovate PRs | Review and merge once CI is green. |
+| Security PR (`[SECURITY]`) | Merge right away, Renovate skips the schedule for these. |
+| CI fails at "Ensure dist is committed" | Run `yarn dist` on the PR branch, commit and push. |
+| `@actions/core` changed | Release a patch version, otherwise users never get the update. |
+| GitHub supports a newer Node.js runtime for actions | Update `runs.using` in `action.yml`, `.nvmrc`, `--target` in the `dist` script and the `24.x` rules in `renovate.json`, then release a major version. |
+| typescript-eslint supports TypeScript 7 | Remove the `typescript` `<7` rule from `renovate.json`. |
+
 ## License
 
 Distributed under the Apache 2.0 License.
