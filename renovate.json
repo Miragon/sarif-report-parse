@@ -15,7 +15,9 @@
   "labels": [
     "dependencies"
   ],
-  "dependencyDashboard": true,
+  "dependencyDashboard": {
+    "enabled": true
+  },
   "minimumReleaseAge": "3 days",
   "customManagers": [
     {
